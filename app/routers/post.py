@@ -17,7 +17,7 @@ router = APIRouter(
 
 def get_posts(db: Session = Depends(get_db),  
                  current_user: int = Depends(oauth2.get_current_user),
-                 limit: int = 10, skip : int = 2,
+                 limit: int = 10, skip : int = 0,
                  search: Optional[str] = ""):
     # print(limit)
     # cursor.execute(
@@ -53,7 +53,7 @@ def create_posts(post : schemas.PostCreate, db: Session = Depends(get_db),
     # sql alchemy creat record 
     #new_post = models.Post(title = post.title, content = post.content, published = post.published)
     #print(current_user.id)
-    new_post = models.Post(owner_d=current_user.id, **post.model_dump())
+    new_post = models.Post(owner_id=current_user.id, **post.model_dump())
     db.add(new_post)
     db.commit()
     db.refresh(new_post)

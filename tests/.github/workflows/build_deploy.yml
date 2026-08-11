@@ -1,0 +1,22 @@
+name: Buil and Deploy Code
+
+on: [push, pull_request]
+
+
+jobs:
+  job1: ubuntu-latest
+  steps:
+    - name: pulling git repo
+      uses: actions/checkout@v2
+    - name: committ changes
+      run: echo "hello hy"
+# on:  
+
+#   push:
+#     branches: 
+#       - "main"
+#       - "anotherbranch"
+#   pull:
+#     branches:
+#     - "test_branch"
+
