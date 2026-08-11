@@ -1,22 +1,16 @@
-name: Buil and Deploy Code
+name: Build and Deploy Code
 
-on: [push, pull_request]
-
+on:
+  push:
+  pull_request:
 
 jobs:
-  job1: ubuntu-latest
-  steps:
-    - name: pulling git repo
-      uses: actions/checkout@v2
-    - name: committ changes
-      run: echo "hello hy"
-# on:  
+  job1:
+    runs-on: ubuntu-latest
 
-#   push:
-#     branches: 
-#       - "main"
-#       - "anotherbranch"
-#   pull:
-#     branches:
-#     - "test_branch"
+    steps:
+      - name: Pulling git repo
+        uses: actions/checkout@v4
 
+      - name: Test workflow
+        run: echo "hello hy"
